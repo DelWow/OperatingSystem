@@ -48,3 +48,27 @@ stack_top:
     - Stack is in its own section, it is marked as NOBITS (zero-initialized memory)
 */
 # NOTE: all stacks on x86 are downwards initialized and must be aligned on 16 bytes
+
+.section .text
+
+.global _start
+
+.type _start, @function
+
+/* Our linker script specifies _start as the entry point to our kernal. Our bootloader will go to this posistion once our kernal has been loaded.
+This function has return as the bootloader will be gone. */
+
+/* Our bootloader will loads us into a 32-bit protected mode. This means that paging, interupts are disabled. */
+/*NOTE: Paging is the method in which modern operating systems manage memory. Memory is split into a pre-defined size blocks
+        Interuptsw*/
+_start:
+
+    mov %stack_top, %esp
+
+    call kernal_main
+
+    cli
+1:  hlt
+    jmp 1b
+
+.size _start, . - _start
