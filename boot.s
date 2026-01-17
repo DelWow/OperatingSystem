@@ -66,7 +66,7 @@ This function has return as the bootloader will be gone. */
         Interupts:*/
 _start:
 
-    mov %stack_top,  # esp -> extended stack pointer
+    mov %stack_top, %esp # esp -> extended stack pointer
 
     call kernal_main
 
