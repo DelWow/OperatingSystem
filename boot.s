@@ -31,9 +31,13 @@ In 86x a page is defined as 4KB or 4096 bytes. If a value is a multiple of 4096,
 /*GRUB only scans the first 8 KiB (8192 bytes) of a file*/
 
 .section .bss
+
 .align 16
+
 stack_bottom:
+
 .skip_bottom 16384 #16 KiB
+
 stack_top:
 
 /*Since our multiboot standard does not intialize an SP (stack pointer), we must initialize it manually*/
@@ -42,5 +46,5 @@ stack_top:
     - Size of 16384 bytes
     - 16 bits or 4 byte alignment
     - Stack is in its own section, it is marked as NOBITS (zero-initialized memory)
-
 */
+# NOTE: all stacks on x86 are downwards initialized and must be aligned on 16 bytes
