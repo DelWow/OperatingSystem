@@ -1,0 +1,9 @@
+Dependencies needed: 
+- gcc
+- make
+- bison
+- flex
+- gmp
+- libmpc
+- mpfr
+- texinfo
