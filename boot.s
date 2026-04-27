@@ -67,7 +67,7 @@ This function has return as the bootloader will be gone. */
 */
 _start:
 
-    mov %stack_top, %esp # esp -> extended stack pointer
+    mov $stack_top, %esp # esp -> extended stack pointer
 
     /* To set up our stack, we can define our stack pointer to the top of our stack (downwards initialized).
     This is needed because C cannot function without a stack */
